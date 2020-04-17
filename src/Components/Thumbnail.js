@@ -15,13 +15,15 @@ export default class Thumbnail extends Component {
             img: props.imgSrc,
             link: props.link
         };
+        this.onLinkClick = this.onLinkClick.bind(this);
+    }
+    onLinkClick() {
+        window.open(this.state.link);
     }
     render() {
         // Takes in an image and a description
         return (
-            <div className="thumbnail-wrapper">
-                    <a href={this.state.link}>
-                    style={{ textDecoration: 'none' }}>
+            <div className="thumbnail-wrapper" style={{ textDecoration: 'none' }} onClick = {this.onLinkClick}>
                     <div className = "card text-center">
                         <div className = "overflow">
                             <img src = {this.state.img} 
@@ -33,7 +35,6 @@ export default class Thumbnail extends Component {
                             </h4>
                         </div>
                     </div>
-                    </a> 
             </div>
         );
     }

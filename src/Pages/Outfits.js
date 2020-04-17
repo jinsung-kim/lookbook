@@ -16,9 +16,6 @@ export default class Outfits extends Component {
             <div className="outfits-wrapper">
                 <h1>Outfits Page</h1>
                 <Fit />
-                {/* <Fit />
-                <Fit />
-                <Fit /> */}
             </div>
         );
     }
