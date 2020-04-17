@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // UI CSS File
 import "../Styles/Thumbnail.css"
@@ -9,7 +9,8 @@ export default class Thumbnail extends Component {
         super(props);
         this.state = {
             title: props.title,
-            description: props.description,
+            // All of the relevant tags used to curate more styles and search
+            tags: [],
             // Image File link
             img: props.imgSrc,
             link: props.link
@@ -19,7 +20,7 @@ export default class Thumbnail extends Component {
         // Takes in an image and a description
         return (
             <div className="thumbnail-wrapper">
-                    <Link className="redirect" to={ this.state.link } 
+                    <a href={this.state.link}>
                     style={{ textDecoration: 'none' }}>
                     <div className = "card text-center">
                         <div className = "overflow">
@@ -30,12 +31,9 @@ export default class Thumbnail extends Component {
                             <h4 className="card-title">
                                 {this.state.title}
                             </h4>
-                            <p className="card-text text-secondary">
-                                {this.state.description}
-                            </p>
                         </div>
                     </div>
-                    </Link>
+                    </a> 
             </div>
         );
     }

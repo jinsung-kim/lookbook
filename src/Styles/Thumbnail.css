@@ -1,5 +1,13 @@
+.wrapper {
+    text-align: center;
+}
+
 .card {
-    width: 20rem;
+    width: 15rem;
+}
+
+.card-title {
+    font-size: 14px;
 }
 
 img {
@@ -11,7 +19,7 @@ img {
 }
 
 .card-body {
-    padding: 3rem 0 !important
+    padding: 0.5rem 0 !important
 }
 
 .card-text {
@@ -34,4 +42,13 @@ img {
 
 .card-img-top:hover {
     transform: scale(1.05);
+}
+
+.wrapper {
+    display: grid;
+    justify-content: center;
+}
+
+.item {
+    padding: 10px;
 }
