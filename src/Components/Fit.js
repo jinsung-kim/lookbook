@@ -69,12 +69,3 @@ export default class Fit extends Component {
         );
     }
 }
-
-Fit.defaultProps = {
-    name: "Outfit Number",
-    hat: ["N/A"],
-    shirt: ["N/A"],
-    pants: ["N/A"],
-    shoes: ["N/A"],
-    outerwear: ["N/A"]
-}

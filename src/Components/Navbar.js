@@ -37,10 +37,6 @@ export default class Navbar extends Component {
                         <Link className="nav-link" 
                         to={ "/outfits" }>Outfits</Link>
                     </li>
-                    {/* <li className="nav-item">
-                        <Link className="nav-link" 
-                        to={ "/archives" }>Archives</Link>
-                    </li> */}
                     </ul>
                 </div>
             </nav>
@@ -48,10 +44,7 @@ export default class Navbar extends Component {
                 <Switch>
                     <Route exact path="/" component={ Home } />
                     <Route path="/trending" component={ Trending } />
-                    {/* <Route path="/documentation" component={ Documentation } /> */}
-                    {/* <Route path="/fits" component={ Fits } /> */}
                     <Route path="/outfits" component={ Outfits } />
-                    {/* <Route path="/archives" component={ Archives } /> */}
                 </Switch>
             </div>
             </Router>
