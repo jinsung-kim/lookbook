@@ -1,25 +1,67 @@
 import React, { Component } from "react";
-import Thumbnail from "./Thumbnail";
+// import Fit from "../Components/Piece";
+import Thumbnail from "../Components/Thumbnail";
 
 import { Container, Row, Col } from 'reactstrap';
 
-export default class Fit extends Component {
+// https://www.youtube.com/watch?v=OlVkYnVXPl0
+
+export default class Pieces extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.name,
-            // All will be objects that contain the information that it requires
-            hat: props.hat,
-            shirt: props.shirt,
-            pants: props.pants,
-            shoes: props.shoes,
-            // Can have up to four outerwear pieces / extras
-            outerwear: props.outerwear
-        }
+            search: "",
+            open: false,
+            link: "",
+            type: "",
+            // Closet refers to all of the pieces
+            closet: []
+        };
+
+        this.addFit = this.addFit.bind(this);
+        this.handleLinkChange = this.handleLinkChange.bind(this);
+        this.handleLinkSubmit = this.handleLinkSubmit.bind(this);
     }
+
+    addFit(e) {
+        e.preventDefault();
+        this.setState({
+            open: !this.state.open
+        });
+    }
+
+    // Link Related
+    handleLinkSubmit(e) {
+        this.setState({ link: e.target.value });
+        alert('A link was submitted: ' + this.state.link);
+        e.preventDefault();
+    }
+
+    handleLinkChange(e) {
+        this.setState({ link: e.target.value });
+    }
+
     render() {
         return (
-            <Container>
+            <div className="outfits-wrapper">
+                <h1>Pieces Saved</h1>
+                <div onClick={ (e)=>this.addFit(e) } className="header">
+                    <p>Add a Piece</p></div>
+                    {this.state.open ? (
+                    <div className="content">
+                    <form onSubmit={ this.handleLinkSubmit }>
+                        <label>
+                        Link:
+                        <input type="text" value={ this.state.link } onChange={ this.handleLinkChange } />
+                        </label>
+                        <input type="submit" value="Submit" />
+                    </form>
+                    </div>
+                    ) : null}
+                <div className="search-wrapper">
+                    <p>This is where the search will go</p>
+                </div>
+                <Container>
                  <h5> {this.state.name} </h5>
                 <Row xs="4">
                     <Col>
@@ -66,6 +108,14 @@ export default class Fit extends Component {
                     </Col>
                 </Row>
             </Container>
+            </div>
         );
+    }
+}
+
+// Used to store each piece which will be passed down to the 
+class Piece {
+    constructor() {
+        
     }
 }
