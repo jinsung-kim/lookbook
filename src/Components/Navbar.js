@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from "../Pages/Home";
 import Trending from "../Pages/Trending";
 import Pieces from "../Pages/Pieces";
+import Explore from "../Pages/Explore";
 
 // Bootstrap
 import 'bootstrap';
@@ -35,6 +36,10 @@ export default class Navbar extends Component {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" 
+                        to={ "/explore" }>Explore</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" 
                         to={ "/pieces" }>Pieces</Link>
                     </li>
                     </ul>
@@ -44,6 +49,7 @@ export default class Navbar extends Component {
                 <Switch>
                     <Route exact path="/" component={ Home } />
                     <Route path="/trending" component={ Trending } />
+                    <Route path="/explore" component={ Explore } />
                     <Route path="/pieces" component={ Pieces } />
                 </Switch>
             </div>

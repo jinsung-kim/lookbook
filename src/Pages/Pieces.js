@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Fit from "../Components/Piece";
 import Thumbnail from "../Components/Thumbnail";
+import MainForm from "../Form/MainForm";
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -12,18 +13,20 @@ export default class Pieces extends Component {
         this.state = {
             search: "",
             open: false,
+            // Indicates which section of the "Add New Piece" process a user is at
+            // Used to render the next portion
+            step: 0,
             link: "",
             type: "",
             // Closet refers to all of the pieces
             closet: []
         };
 
-        this.addFit = this.addFit.bind(this);
-        this.handleLinkChange = this.handleLinkChange.bind(this);
-        this.handleLinkSubmit = this.handleLinkSubmit.bind(this);
+        this.dropDown = this.dropDown.bind(this);
+
     }
 
-    addFit(e) {
+    dropDown(e) {
         e.preventDefault();
         this.setState({
             open: !this.state.open
@@ -41,25 +44,23 @@ export default class Pieces extends Component {
         this.setState({ link: e.target.value });
     }
 
+    handleTypeChange(e) {
+        this.setState({ type: e.target.value});
+    }
+
     render() {
         return (
             <div className="outfits-wrapper">
                 <h1>Pieces Saved</h1>
-                <div onClick={ (e)=>this.addFit(e) } className="header">
+                <div onClick={ (e)=>this.dropDown(e) } className="header">
                     <p>Add a Piece</p></div>
                     {this.state.open ? (
                     <div className="content">
-                    <form onSubmit={ this.handleLinkSubmit }>
-                        <label>
-                        Link:
-                        <input type="text" value={ this.state.link } onChange={ this.handleLinkChange } />
-                        </label>
-                        <input type="submit" value="Submit" />
-                    </form>
+                        <MainForm />
                     </div>
                     ) : null}
                 <div className="search-wrapper">
-                    <p>This is where the search will go</p>
+                    {/* <p>This is where the search will go</p> */}
                 </div>
                 <Container>
                  <h5> {this.state.name} </h5>
@@ -110,12 +111,5 @@ export default class Pieces extends Component {
             </Container>
             </div>
         );
-    }
-}
-
-// Used to store each piece which will be passed down to the 
-class Piece {
-    constructor() {
-        
     }
 }
