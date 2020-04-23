@@ -58,7 +58,7 @@ export default class MainForm extends Component {
             case 2:
                 return (
                     <div className="form-wrapper">
-                        <Success />
+                        <Success />f
                     </div>
                 );
             default:
