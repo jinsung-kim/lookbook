@@ -5,7 +5,6 @@ export default class BasicDetails extends Component {
     
     saveAndContinue = (e) => {
         e.preventDefault();
-        this.props.alterTags();
         this.props.nextStep();
     }
 
@@ -13,13 +12,11 @@ export default class BasicDetails extends Component {
         return (
             <div>
                 <Form >
-                {/* <h1 className="ui centered">Enter User Details</h1> */}
                 <Form.Field>
                     <label>Name</label>
                     <input
                     placeholder=''
                     onChange={this.props.handleChange('name')}
-                    // defaultValue={values.link}
                     />
                 </Form.Field>
                 <Form.Field>
@@ -27,15 +24,13 @@ export default class BasicDetails extends Component {
                     <input
                     placeholder=''
                     onChange={this.props.handleChange('brand')}
-                    // defaultValue={values.imgLink}
                     />
                 </Form.Field>
                 <Form.Field>
                     <label>Tags</label>
                     <input
                     placeholder=''
-                    onChange={this.props.handleChange('tags')}
-                    // defaultValue={values.imgLink}
+                    onChange={this.props.handleChange('tagString')}
                     />
                 </Form.Field>
                 <Form.Field>
@@ -51,14 +46,10 @@ export default class BasicDetails extends Component {
                 </Form.Field>
                 <Form.Field>
                     <label>Size</label>
-                    <select onChange={this.props.handleChange('size')}>
-                        <option value="Hat">OS</option>
-                        <option value="Top">XS</option>
-                        <option value="Pants">S</option>
-                        <option value="Shoes">M</option>
-                        <option value="Outerwear">L</option>
-                        <option value="Accessory">XL</option>
-                    </select>
+                    <input
+                    placeholder=''
+                    onChange={this.props.handleChange('size')}
+                    />
                 </Form.Field>
                 <Button onClick={ this.saveAndContinue }> Add Piece </Button>
             </Form>

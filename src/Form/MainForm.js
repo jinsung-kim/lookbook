@@ -3,6 +3,9 @@ import LinkDetails from "./LinkDetails";
 import BasicDetails from "./BasicDetails";
 import Success from "./Success";
 
+// Backend call
+import axios from "axios";
+
 import "../Styles/MainForm.css";
 
 export default class MainForm extends Component {
@@ -10,13 +13,16 @@ export default class MainForm extends Component {
         super(props);
         this.state = {
             step: 0,
-            type: "",
+            type: "Outerwear",
             link: "",
             imgLink: "",
             brand: "",
             name: "",
-            size: "",
-            tags: ""
+            size: "OS",
+            tagString: "",
+            tags: [],
+            counter: 0,
+            complete: false
         }
         this.nextStep = this.nextStep.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -31,10 +37,44 @@ export default class MainForm extends Component {
         this.setState({ [input] : event.target.value });
     }
 
+    handleTags() {
+        var tagsSplit = this.state.tagString.split(/[\s,]+/);
+        // Because asynchronous
+        this.setState({ tags: tagsSplit }, () => console.log(this.state.tags));
+        this.createAndSend();
+    }
+
+    createAndSend() {
+        const newPiece = {
+            name: this.state.name,
+            brand: this.state.brand,
+            size: this.state.size,
+            type: this.state.type,
+            tags: this.state.tags,
+            link: this.state.link,
+            imgLink: this.state.imgLink
+        }
+
+        console.log(newPiece);
+
+        axios.post("http://localhost:5000/pieces/add", newPiece).then(res => console.log(res.data));
+
+        // window.location = "/";
+    }
+
     render() {
         const { step } = this.state;
+        // Separate the tags
+        if (this.state.complete === false && step === 2 && this.state.counter === 0) {
+            this.setState({ 
+                complete: true,
+                counter: 1
+            });
+            this.handleTags();
+        }
         switch(step) {
             case 0:
+                
                 return (
                     <div className="form-wrapper">
                         <LinkDetails 
@@ -68,16 +108,3 @@ export default class MainForm extends Component {
         }
     }
 }
-
-// Used to store each piece which will be passed down to the 
-// class Piece {
-//     constructor(name, brand, type, size, link, imgLink, tags) {
-//         this.name = name;
-//         this.brand = brand;
-//         this.type = type;
-//         this.size = size;
-//         this.link = link;
-//         this.imgLink = imgLink;
-//         this.tags = tags;
-//     }
-// }

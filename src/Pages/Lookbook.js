@@ -7,17 +7,12 @@ import { Container, Row, Col } from 'reactstrap';
 
 // https://www.youtube.com/watch?v=OlVkYnVXPl0
 
-export default class Pieces extends Component {
+export default class Lookbook extends Component {
     constructor(props) {
         super(props);
         this.state = {
             search: "",
             open: false,
-            // Indicates which section of the "Add New Piece" process a user is at
-            // Used to render the next portion
-            step: 0,
-            link: "",
-            type: "",
             // Closet refers to all of the pieces
             closet: []
         };
@@ -31,21 +26,6 @@ export default class Pieces extends Component {
         this.setState({
             open: !this.state.open
         });
-    }
-
-    // Link Related
-    handleLinkSubmit(e) {
-        this.setState({ link: e.target.value });
-        alert('A link was submitted: ' + this.state.link);
-        e.preventDefault();
-    }
-
-    handleLinkChange(e) {
-        this.setState({ link: e.target.value });
-    }
-
-    handleTypeChange(e) {
-        this.setState({ type: e.target.value});
     }
 
     render() {
