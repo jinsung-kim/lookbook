@@ -18,7 +18,6 @@ export default class MainForm extends Component {
             size: "",
             tags: ""
         }
-
         this.nextStep = this.nextStep.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -30,8 +29,6 @@ export default class MainForm extends Component {
 
     handleChange = input => event => {
         this.setState({ [input] : event.target.value });
-        console.log(input);
-        console.log(event.target.value);
     }
 
     render() {
@@ -58,7 +55,7 @@ export default class MainForm extends Component {
             case 2:
                 return (
                     <div className="form-wrapper">
-                        <Success />f
+                        <Success />
                     </div>
                 );
             default:
