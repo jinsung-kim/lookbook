@@ -9,7 +9,7 @@ const pieceSchema = new Schema({
   link: { type: String, required: true },
   imgLink: { type: String, required: true },
   type: { type: String, required: true },
-  tags: { type: Array, required: true },
+  tags: { type: Array, required: false },
 }, {
   timestamps: true,
 });

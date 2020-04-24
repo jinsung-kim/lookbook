@@ -3,9 +3,6 @@ import LinkDetails from "./LinkDetails";
 import BasicDetails from "./BasicDetails";
 import Success from "./Success";
 
-// Backend call
-import axios from "axios";
-
 import "../Styles/MainForm.css";
 
 export default class MainForm extends Component {
@@ -21,7 +18,6 @@ export default class MainForm extends Component {
             size: "OS",
             tagString: "",
             tags: [],
-            counter: 0,
             complete: false
         }
         this.nextStep = this.nextStep.bind(this);
@@ -40,41 +36,20 @@ export default class MainForm extends Component {
     handleTags() {
         var tagsSplit = this.state.tagString.split(/[\s,]+/);
         // Because asynchronous
-        this.setState({ tags: tagsSplit }, () => console.log(this.state.tags));
-        this.createAndSend();
-    }
-
-    createAndSend() {
-        const newPiece = {
-            name: this.state.name,
-            brand: this.state.brand,
-            size: this.state.size,
-            type: this.state.type,
-            tags: this.state.tags,
-            link: this.state.link,
-            imgLink: this.state.imgLink
-        }
-
-        console.log(newPiece);
-
-        axios.post("http://localhost:5000/pieces/add", newPiece).then(res => console.log(res.data));
-
-        // window.location = "/";
+        this.setState({ tags: tagsSplit });
     }
 
     render() {
         const { step } = this.state;
         // Separate the tags
         if (this.state.complete === false && step === 2 && this.state.counter === 0) {
-            this.setState({ 
-                complete: true,
-                counter: 1
+            this.setState({
+                complete: true
             });
             this.handleTags();
         }
         switch(step) {
             case 0:
-                
                 return (
                     <div className="form-wrapper">
                         <LinkDetails 
@@ -89,13 +64,22 @@ export default class MainForm extends Component {
                         <BasicDetails
                         nextStep = {this.nextStep}
                         handleChange = {this.handleChange}
+                        onSubmit={this.handleSubmit}
+                        createAndSend={this.createAndSend}
                         />
                     </div>
                 );
             case 2:
                 return (
                     <div className="form-wrapper">
-                        <Success />
+                        <Success name = {this.state.name}
+                                brand = {this.state.brand}
+                                size = {this.state.size}
+                                type = {this.state.type}
+                                tags = {this.state.tags}
+                                link = {this.state.link}
+                                imgLink = {this.state.imgLink}
+                        />
                     </div>
                 );
             default:
