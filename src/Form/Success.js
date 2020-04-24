@@ -19,19 +19,14 @@ export default class Success extends Component {
         // axios.post("http://localhost:5000/pieces/add", newPiece).then(res => console.log(res.data));
     }
 
-    refreshPage() {
-        window.location.reload(false);
-    }
-
     componentDidMount() {
         this.create();
-        // Timeout here
-        this.refreshPage();
     }
     render() {
         return (
             <div>
                 <h5>Saved Successfully</h5>
+                <p>Refresh Page</p>
             </div>
         );
     }
