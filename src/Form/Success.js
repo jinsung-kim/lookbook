@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 
 // Backend
-import axios from "axios";
+// import axios from "axios";
 
 export default class Success extends Component {
-    state = {
-        counter: 0
-    }
+
     create() {
         const newPiece = {
             name: this.props.name,
@@ -18,10 +16,17 @@ export default class Success extends Component {
             imgLink: this.props.imgLink
         }
         console.log(newPiece);
-        axios.post("http://localhost:5000/pieces/add", newPiece).then(res => console.log(res.data));
+        // axios.post("http://localhost:5000/pieces/add", newPiece).then(res => console.log(res.data));
     }
+
+    refreshPage() {
+        window.location.reload(false);
+    }
+
     componentDidMount() {
         this.create();
+        // Timeout here
+        this.refreshPage();
     }
     render() {
         return (
