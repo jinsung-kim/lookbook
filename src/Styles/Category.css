@@ -3,10 +3,6 @@
     display: inline;
 }
 
-.text-center {
-    padding-right: -15px;
-}
-
 .col {
     padding: 10px;
 }
@@ -32,7 +28,7 @@ img {
 }
 
 .card-body {
-    padding: 0.5rem 0 !important
+    padding: 0.5rem 0 !important;
 }
 
 .container-fluid .row {
