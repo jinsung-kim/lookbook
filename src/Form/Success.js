@@ -22,6 +22,7 @@ export default class Success extends Component {
     componentDidMount() {
         this.create();
     }
+    
     render() {
         return (
             <div>

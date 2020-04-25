@@ -4,8 +4,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="explore-wrapper">
-                <p>Explore Page</p>
-                <h1>Tech Wear</h1>
+                <h1>Discover a New Style</h1>
             </div>
         );
     }

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Thumbnail from "../Components/Thumbnail";
 import MainForm from "../Form/MainForm";
 
+import "../Styles/Lookbook.css";
+
 import axios from "axios";
 
 import { Container, Row, Col } from 'reactstrap';
@@ -43,15 +45,17 @@ export default class Lookbook extends Component {
                 <div className="item">
                     <Thumbnail title={piece.name}
                             imgSrc={piece.imgLink}
-                            link={piece.link} />
+                            link={piece.link}
+                            id={piece._id} />
                 </div>
             </Col>
         )
         return (
             <div className="outfits-wrapper">
                 <h1>Lookbook</h1>
-                <div onClick={ (e)=>this.dropDown(e) } className="header">
-                    <p>{(this.state.open) ? "Save Piece" : "Add a Piece"}</p></div>
+                <div className="header">
+                    <p className="add-piece" onClick={ (e)=>this.dropDown(e) } >
+                        {(this.state.open) ? "Save Piece" : "Add a Piece"}</p></div>
                     {this.state.open ? (
                     <div className="content">
                         <MainForm />
