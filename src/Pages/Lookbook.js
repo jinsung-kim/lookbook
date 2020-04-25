@@ -49,7 +49,7 @@ export default class Lookbook extends Component {
                             id={piece._id} />
                 </div>
             </Col>
-        )
+        );
         return (
             <div className="outfits-wrapper">
                 <h1>Lookbook</h1>

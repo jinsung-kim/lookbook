@@ -1,3 +1,20 @@
+.row {
+    justify-content: center;
+    display: inline;
+}
+
+.text-center {
+    padding-right: -15px;
+}
+
+.col {
+    padding: 10px;
+}
+
+.category-wrapper {
+    display: inline-block;
+}
+
 .card {
     width: 15rem;
 }
@@ -18,11 +35,6 @@ img {
     padding: 0.5rem 0 !important
 }
 
-.card-text {
-    font-size: 0.9rem;
-    padding: 0.4rem 1.9rem;
-}
-
 .container-fluid .row {
     padding-top: 6rem;
 }
@@ -38,8 +50,4 @@ img {
 
 .card-img-top:hover {
     transform: scale(1.05);
-}
-
-.item {
-    padding: 10px;
 }
