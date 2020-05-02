@@ -52,7 +52,7 @@ export default class Lookbook extends Component {
         );
         return (
             <div className="outfits-wrapper">
-                <h1>Lookbook</h1>
+                <h3>Lookbook</h3>
                 <div className="header">
                     <p className="add-piece" onClick={ (e)=>this.dropDown(e) } >
                         {(this.state.open) ? "Save Piece" : "Add a Piece"}</p></div>

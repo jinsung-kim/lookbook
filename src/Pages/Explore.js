@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Category from "../Components/Category";
+import Piece from "../Components/Piece";
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -31,12 +32,33 @@ const styles = [
     }
 ]
 
+const recommendations = [
+    {
+        title: "Raiders Varsity Jacket",
+        link: "https://www.grailed.com/listings/14027521-nfl-x-oakland-raiders-x-varsity-jacket-oakland-raiders-varsity-jacket",
+        imgLink: "https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/auto_image/cache=expiry:max/rotate=deg:exif/resize=height:640,width:480,fit:crop/output=quality:70/compress/https://cdn.fs.grailed.com/api/file/rh7r75qaRUG8gtv763Or"
+    }, {
+        title: "Nike Air Max 2019",
+        link: "https://www.grailed.com/listings/14142572-nike-air-vapormax-2019-ghost-black-2019",
+        imgLink: "https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/auto_image/cache=expiry:max/rotate=deg:exif/resize=height:640,width:480,fit:crop/output=quality:70/compress/https://cdn.fs.grailed.com/api/file/GwClP7KURxmNZkIN8jlk"
+    }, {
+        title: "Kapital Striped Shirt",
+        link: "https://www.grailed.com/listings/13125455-kapital-kapital-stripes-sweatshirt",
+        imgLink: "https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/auto_image/cache=expiry:max/rotate=deg:exif/resize=height:640,width:480,fit:crop/output=quality:70/compress/https://cdn.fs.grailed.com/api/file/vZBmyVTHQRmXqLOWbQs6"
+    }, {
+        title: "Bjork Debut Album T Shirt",
+        link: "https://www.grailed.com/listings/14309238-band-tees-x-movie-rare-bjork-debut-album-winterland-t-shirt",
+        imgLink: "https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/auto_image/cache=expiry:max/rotate=deg:exif/resize=height:640,width:480,fit:crop/output=quality:70/compress/https://cdn.fs.grailed.com/api/file/tSfOWPTQTniXnD91pYFz"
+    }
+]
+
 export default class Home extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            styles: styles
+            styles: styles,
+            recommendations: recommendations
         }
     }
     
@@ -50,9 +72,25 @@ export default class Home extends Component {
                 </div>
             </Col>
         );
+        const algorithm = this.state.recommendations.map((item) => 
+            <Col>
+                <Piece  name={item.title}
+                        imgLink={item.imgLink}
+                        link={item.link} />
+            </Col>  
+        );
         return (
             <div className="explore-wrapper">
-                <h1>Discover a New Style</h1>
+                <h3>Based on Your Lookbook...</h3>
+                <div className="algorithm">
+                    <Container>
+                        <Row xs="4">
+                            {algorithm}
+                        </Row>
+                    </Container>
+                </div>
+                <p></p>
+                <h3>Discover a New Style</h3>
                 <div className="categories">
                     <Container>
                         <Row xs="3">
